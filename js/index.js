@@ -49,11 +49,15 @@ let topButton = document.querySelector(".cta-text button");
 let mainContentHeader = document.querySelectorAll(".text-content h4");
 let mainContentParagraph = document.querySelectorAll(".text-content p");
 let mainContentImage = document.querySelector(".middle-img");
+let contactHeader = document.querySelector(".contact h4");
+let contactParagraph = document.querySelectorAll(".contact p");
+let footer = document.querySelector("footer");
 
 
 //******code*****
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
+//setting up the nav bar
 for (let i = 0; i < navBar.length; i++) {
   navBar[i].textContent = siteContent["nav"][`nav-item-${i}`];
 }
@@ -64,7 +68,7 @@ topHeader.innerHTML = siteContent["cta"]["h1"];
 
 topButton.innerHTML = siteContent["cta"]["button"];
 
-
+//putting keys containing "h4" into an array to use in the for loop
 let parentArray = siteContent["main-content"];
 let keys = Object.keys(parentArray);
 let newKeys = keys.filter(n => n.includes("h4"));
@@ -76,9 +80,26 @@ for (let i = 0; i < newKeys.length; i++) {
 
 mainContentImage.src = siteContent["main-content"]["middle-img-src"];
 
+//putting keys containing "content" into an array to use in the for loop
 let textKeys = Object.keys(parentArray);
 let newTextKeys = keys.filter(n => n.includes("content"));
 
 for (let i = 0; i < newTextKeys.length; i++) {
   mainContentParagraph[i].innerHTML = parentArray[newTextKeys[i]];
 }
+
+contactHeader.innerHTML = siteContent["contact"]["contact-h4"];
+
+//putting keys into an array to cycle through them in the for loop
+let parentArrayContact = siteContent["contact"];
+let contactKeys = Object.keys(parentArrayContact);
+
+for (let i = 0; i <contactKeys.length -1; i++) {
+  contactParagraph[i].innerHTML = parentArrayContact[contactKeys[i]];
+}
+
+footer.innerHTML = siteContent["footer"]["copyright"];
+
+
+//*****stretch*****
+
