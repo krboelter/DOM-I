@@ -38,14 +38,47 @@ const siteContent = {
 };
 
 // Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+
+//*****selectors*****
+let logo = document.getElementById("logo-img");
 let navBar = document.querySelectorAll("a");
 let logoImg = document.getElementById("cta-img");
+let topHeader = document.querySelector(".cta-text h1");
+let topButton = document.querySelector(".cta-text button");
+let mainContentHeader = document.querySelectorAll(".text-content h4");
+let mainContentParagraph = document.querySelectorAll(".text-content p");
+let mainContentImage = document.querySelector(".middle-img");
+
+
+//******code*****
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 for (let i = 0; i < navBar.length; i++) {
   navBar[i].textContent = siteContent["nav"][`nav-item-${i}`];
 }
 
 logoImg.setAttribute('src', siteContent["cta"]["img-src"]);
+
+topHeader.innerHTML = siteContent["cta"]["h1"];
+
+topButton.innerHTML = siteContent["cta"]["button"];
+
+
+let parentArray = siteContent["main-content"];
+let keys = Object.keys(parentArray);
+let newKeys = keys.filter(n => n.includes("h4"));
+
+
+for (let i = 0; i < newKeys.length; i++) {
+  mainContentHeader[i].innerHTML = parentArray[newKeys[i]];
+}
+
+mainContentImage.src = siteContent["main-content"]["middle-img-src"];
+
+let textKeys = Object.keys(parentArray);
+let newTextKeys = keys.filter(n => n.includes("content"));
+
+for (let i = 0; i < newTextKeys.length; i++) {
+  mainContentParagraph[i].innerHTML = parentArray[newTextKeys[i]];
+}
