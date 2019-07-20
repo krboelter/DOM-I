@@ -103,3 +103,5 @@ footer.innerHTML = siteContent["footer"]["copyright"];
 
 //*****stretch*****
 
+topButton.style.color = "purple";
+topButton.setAttribute("class", "mainButton");
